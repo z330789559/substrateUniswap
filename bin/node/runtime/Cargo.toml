@@ -82,8 +82,8 @@ pallet-vesting = { version = "2.0.0", default-features = false, path = "../../..
 pallet-token = { version = "2.0.0", default-features = false, path = "../../../frame/token" }
 pallet-token-rpc-runtime-api={version = "2.0.0", default-features = false,  path="../../../frame/token/rpc/runtime-api" }
 pallet-fungible-assets = { version = "2.0.0", default-features = false, path = "../../../frame/fungible-assets" }
-pallet_swaps = { version = "2.0.0", default-features = false, path = "../../../frame/swaps" }
-
+pallet-swaps = { version = "2.0.0", default-features = false, path = "../../../frame/swaps" }
+pallet-finance = { version = "2.0.0", default-features = false, path = "../finance" }
 [build-dependencies]
 wasm-builder-runner = { version = "1.0.5", package = "substrate-wasm-builder-runner", path = "../../../utils/wasm-builder-runner" }
 

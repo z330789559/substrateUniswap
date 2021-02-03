@@ -30,7 +30,7 @@ type BalanceOf<T> = <<T as Trait>::Currency as Currency<<T as frame_system::Trai
 
 type AccountDataOf<T> =  pallet_balances::AccountData<<T as pallet_token::Trait>::Balance>;
 /// The swap's module id, used for deriving sovereign account IDs.
-const MODULE_ID: DefineModeId = DefineModeId(*b"mtg/swap");
+const MODULE_ID: DefineModeId = DefineModeId(*b"mtg/finance");
 
 /// The pallet's configuration trait.
 pub trait Trait: frame_system::Trait + pallet_token::Trait {
@@ -443,7 +443,7 @@ impl<T: Trait> Module<T> {
 	{   
 
 		let numerator = input_reserve * output_amount * Self::convert_balance(1000u128);
-		let denominator = (output_reserve - output_amount) * Self::convert_balance(1000u128);
+		let denominator = (output_reserve - output_amount) * Self::convert_balance(997u128);
 		numerator / denominator + Self::convert_balance(1u128)
 	}
 
@@ -453,7 +453,7 @@ impl<T: Trait> Module<T> {
 		output_reserve: T::Balance,
 	) -> T::Balance
 	{
-		let input_amount_with_fee = input_amount * Self::convert_balance(1000u128);
+		let input_amount_with_fee = input_amount * Self::convert_balance(997u128);
 		let numerator = input_amount_with_fee * output_reserve;
 		let denominator = (input_reserve * Self::convert_balance(1000u128)) + input_amount_with_fee;
 		numerator / denominator
@@ -479,4 +479,14 @@ impl<T: Trait> Module<T> {
 	fn get_swap_balance(swap: &Swap<T::AccountId, T::AssetId>) -> BalanceOf<T> {
 		T::Currency::free_balance(&swap.account)
 	}
+}
+
+
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn it_works() {
+        assert_eq!(2 + 2, 4);
+    }
 }

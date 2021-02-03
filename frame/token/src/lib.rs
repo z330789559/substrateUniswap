@@ -92,7 +92,7 @@ decl_module!(
         ) -> dispatch::DispatchResult 
         {
             let sender = ensure_signed(origin)?;
-
+             
             let _id = Self::create_token(sender, total_supply);
             // Inspecting variables
         
@@ -187,6 +187,10 @@ decl_module!(
 );
 
 impl<T: Trait> Module<T> {
+
+    pub fn query_assest_id()-> T::AssetId {
+        <TokenCount<T>>::get()
+    }
     pub fn mint(id: T::AssetId, to: T::AccountId, amount: T::Balance)
         -> dispatch::DispatchResult
     {

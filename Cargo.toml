@@ -98,6 +98,7 @@ members = [
 	"frame/society",
 	"frame/staking",
 	"frame/token",
+		"frame/finance",
 	"frame/swaps",
 	"frame/staking/reward-curve",
 	"frame/staking/fuzzer",
